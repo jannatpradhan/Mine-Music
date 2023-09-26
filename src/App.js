@@ -14,16 +14,20 @@ const App=()=>{
     const [loadValue,setLoadValue]=useState(false);
 
     const findSongs= async (keyword)=>{
-        setLoadValue(true);
-        const request= await fetch(`https://v1.nocodeapi.com/jkp/spotify/MsXOWOwprzyAWDSG/search?q=${keyword}&type=track`);
-        const songData=await request.json();
-        accessContext.setSearchSong(songData.tracks.items);
-        setLoadValue(false);
-    }
+            setLoadValue(true);
+            try {
+                const res = await fetch(`https://v1.nocodeapi.com/jkp/spotify/MsXOWOwprzyAWDSG/search?q=${keyword}&type=track`);
+                const songData = await res.json();
+                accessContext.setSearchSong(songData.tracks.items);
+                setLoadValue(false);
+            } catch (e) {
+                setLoadValue(false);
+                alert("Something went wrong please try again");
+                console.error("Error", e);
+            }
+            
+        }
 
-
-    // useEffect(()=>{
-    // },[]);
 
     return(
         <div className="grey-background">
@@ -48,11 +52,12 @@ const App=()=>{
                     
                     accessContext.searchSong.map((element)=>{
                         return(
-                            <div keys={element.id}>
+                            <div>
                                 <MusicCard
                                 images={element.album.images[1].url} 
                                 name={element.album.name}
                                 audio={element.preview_url}
+                                keys={element.id}
                                 />
                             </div>
                         )
