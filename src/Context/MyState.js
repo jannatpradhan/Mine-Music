@@ -5,11 +5,9 @@ const ContextData=(props)=>{
     const [keyword,setKeyword]=useState("");
     const [searchSong,setSearchSong]=useState([]);
 
-    const testData="hii I am test Data";
     return(
         <contextObj.Provider value={
             {
-                testData,
                 keyword,
                 setKeyword,
                 searchSong,

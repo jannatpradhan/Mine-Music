@@ -7,6 +7,8 @@ import contextObj from './Context/MyContext';
 import 'semantic-ui-css/semantic.min.css';
 import './Components/MusicCard.css';
 
+const chabi=process.env.REACT_APP_API_ENDPOINT;
+
 
 const App=()=>{
 
@@ -16,7 +18,7 @@ const App=()=>{
     const findSongs= async (keyword)=>{
             setLoadValue(true);
             try {
-                const res = await fetch(`https://v1.nocodeapi.com/jkp/spotify/MsXOWOwprzyAWDSG/search?q=${keyword}&type=track`);
+                const res = await fetch(`https://v1.nocodeapi.com/jkp/spotify/${chabi}/search?q=${keyword}&type=track`);
                 const songData = await res.json();
                 accessContext.setSearchSong(songData.tracks.items);
                 setLoadValue(false);
@@ -32,7 +34,6 @@ const App=()=>{
     return(
         <div className="grey-background">
             <div style={{display: "flex",justifyContent:"center",alignItems:"center",margin:"4%"}}>
-                
                 <Input
                     placeholder='Search song...'
                     value={accessContext.keyword}
