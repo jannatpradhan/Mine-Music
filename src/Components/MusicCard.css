@@ -1,6 +1,10 @@
-
+body{
+  background:linear-gradient(rgba(73, 11, 159, 0.5),transparent);
+  background-color:rgb(58, 144, 197) /*this your primary color*/
+}
 .grey-background {
-  background-color: rgb(255, 250, 250); /* Set the background color to light gray */
+  
   padding: 20px; /* Optional: Add padding for spacing */
-  height: 100vh;
+  height: 100%;
+
 }
