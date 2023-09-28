@@ -9195,23 +9195,25 @@ const App=()=>{
         }
 
 
-    return(
-        <div className="grey-background">
-            <div style={{display: "flex",justifyContent:"center",alignItems:"center",margin:"4%"}}>
-                <Input
-                    placeholder='Search song...'
-                    value={accessContext.keyword}
-                    onChange={(e)=>{accessContext.setKeyword(e.target.value)}}
-                    action={{
-                        icon: 'search',
-                        onClick: () => findSongs(accessContext.keyword),
-                      }}
-                />
-                
-            </div>
-            <div style={{display: "flex",justifyContent:"center",alignItems:"center"}}>
-                <Spinner loadValue={loadValue}/>
-            </div>
+    return (
+  <div className="grey-background" >
+    <div class="sticky-input-container">
+
+      <div class="ui icon input">
+        <Input
+          placeholder='Search song...'
+          value={accessContext.keyword}
+          onChange={(e) => { accessContext.setKeyword(e.target.value) }}
+        />
+        <i class="inverted circular search link icon" onClick={() => findSongs(accessContext.keyword)}></i>
+
+    </div>
+    </div>
+
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Spinner loadValue={loadValue} />
+    </div>
+
             <Card.Group>
                 {accessContext.searchSong&&
                     
