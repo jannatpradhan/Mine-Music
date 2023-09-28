@@ -4,7 +4,7 @@ import { Button, Card, Image,Icon } from 'semantic-ui-react'
 
 const MusicCard = (props) => (
   
-  <Card style={{ margin: "30px" }} key={props.keys}>
+  <Card style={{ margin: "30px" }} key={props.keys} className='grid-item'>
   <Image src={props.images} wrapped ui={false} />
   <Card.Content>
     <Card.Header>{props.name}</Card.Header>

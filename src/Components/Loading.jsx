@@ -1,12 +1,12 @@
 import React from 'react';
-import { PacmanLoader } from 'react-spinners';
+import { PuffLoader } from 'react-spinners';
 
 const Spinner=(props)=> {
     
     return (
       <div className='sweet-loading'>
-        <PacmanLoader
-          color="#7836d6" 
+        <PuffLoader
+          color="white" 
           loading={props.loadValue} 
         />
       </div>

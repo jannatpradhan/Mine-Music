@@ -9210,11 +9210,11 @@ const App=()=>{
     </div>
     </div>
 
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div className="centered-spinner-container" >
       <Spinner loadValue={loadValue} />
     </div>
 
-            <Card.Group>
+            <Card.Group className="grid-container" >
                 {accessContext.searchSong&&
                     
                     accessContext.searchSong.map((element)=>{
