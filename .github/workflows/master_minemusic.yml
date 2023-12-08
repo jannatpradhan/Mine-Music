@@ -32,8 +32,8 @@ jobs:
       - name: Zip Release
         uses: TheDoctor0/zip-release@0.7.6
         with:
-          filename: node-app
-          path: release.zip
+          filename: release.zip
+          path: ./build/*
           
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
