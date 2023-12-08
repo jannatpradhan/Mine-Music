@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+      - name: Set CI to false
+        run: echo "process.env.CI=false" >> $GITHUB_ENV
 
       - name: npm install, build, and test
         run: |
