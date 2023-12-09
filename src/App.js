@@ -13,22 +13,30 @@ const App=()=>{
 
     const accessContext=useContext(contextObj);
     const [loadValue,setLoadValue]=useState(false);
+    
 
     const findSongs= async (keyword)=>{
             setLoadValue(true);
-            try {
-                const res = await fetch(`https://v1.nocodeapi.com/jkp/spotify/${chabi}/search?q=${keyword}&type=track`);
-                const songData = await res.json();
-                accessContext.setSearchSong(songData.tracks.items);
-                // accessContext.setSearchSong(testData);
-                setLoadValue(false);
-                
-            } catch (e) {
-                setLoadValue(false);
-                alert("Something went wrong please try again");
-                console.error("Error", e);
+            let MAX_RETRIES = 2;
+            while(MAX_RETRIES){
+                try {
+                    const res = await fetch(`https://v1.nocodeapi.com/jkp/spotify/${chabi}/search?q=${keyword}&type=track`);
+                    const songData = await res.json();
+                    console.log("Data",res);
+                    accessContext.setSearchSong(songData.tracks.items);
+                    // accessContext.setSearchSong(testData);
+                    setLoadValue(false);
+                    return
+                } catch (e) {
+                    MAX_RETRIES--;
+                    if(MAX_RETRIES===0){
+                        setLoadValue(false);
+                        alert("Something went wrong please try again");
+                    }
+                    
+                    console.error("Error try count", MAX_RETRIES);
+                }
             }
-            
         }
 
 
@@ -41,6 +49,11 @@ const App=()=>{
           placeholder='Search song...'
           value={accessContext.keyword}
           onChange={(e) => { accessContext.setKeyword(e.target.value) }}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              findSongs(accessContext.keyword);
+            }
+          }}
         />
         <i class="inverted circular search link icon" onClick={() => findSongs(accessContext.keyword)}></i>
 
