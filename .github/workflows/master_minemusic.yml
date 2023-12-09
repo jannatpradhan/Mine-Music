@@ -28,7 +28,8 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-        env: ${{secrets.REACT_APP_API_ENDPOINT}}
+        env: 
+          REACT_APP_API_ENDPOINT: ${{secrets.REACT_APP_API_ENDPOINT}}
         
       - name: Print Environment Variables
         run: echo "REACT_APP_API_ENDPOINT=$REACT_APP_API_ENDPOINT"
