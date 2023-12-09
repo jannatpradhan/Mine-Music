@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-## Project Demo https://jannatpradhan.github.io/Mine-Music/
+## Project Demo https://jannatpradhan.github.io/Mine-Music/ or https://minemusic.azurewebsites.net/
 ## Available Scripts
 
 In the project directory, you can run:
