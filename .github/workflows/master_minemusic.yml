@@ -23,15 +23,15 @@ jobs:
       - name: Set CI to false
         run: echo "process.env.CI=false" >> $GITHUB_ENV
         
-      - name: Print Environment Variables
-        run: echo "REACT_APP_API_ENDPOINT=$REACT_APP_API_ENDPOINT"
-
-
       - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
+        env: ${{secrets.REACT_APP_API_ENDPOINT}}
+        
+      - name: Print Environment Variables
+        run: echo "REACT_APP_API_ENDPOINT=$REACT_APP_API_ENDPOINT"
 
 
       - name: Zip Release
